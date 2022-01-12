@@ -1,27 +1,52 @@
 class Queue {
+  //queue is FIFO (First-In-First-Out) structure
+  //remember of Queue Overflow and Queue Underflow.
   constructor() {
     this.queueControl = [];
     this.MAX_SIZE = 10;
   }
 
   canEnqueue() {
-    // ... your code goes here
+    if (this.queueControl.length < this.MAX_SIZE) {
+      return true;
+   } else {
+     return false;
+   }
   }
 
   isEmpty() {
-    // ... your code goes here
+    if (this.queueControl.length > 0) {
+      return false;
+   } else {
+     return true;
+   }
   }
 
   enqueue(item) {
-    // ... your code goes here
+    let canEnqueue = this.canEnqueue();
+    if (canEnqueue === true) {
+      this.queueControl.push(item);
+    } else {
+      //Stack overflow case
+      throw new Error('QUEUE_OVERFLOW');
+    }
   }
 
   dequeue() {
-    // ... your code goes here
+    let isEmpty = this.isEmpty();
+    if (isEmpty === false) {
+    //remove the first item
+      this.stackControl.shift();
+    } else {
+      //have a case of Stack Underflow
+      throw new Error('QUEUE_UNDERFLOW');
+    }
   }
 
   display() {
-    // ... your code goes here
+    for (let i = 0; i < this.queueControl.length; i++) {
+      return this.queueControl[i];
+    }
   }  
 }
 
