@@ -26,6 +26,7 @@ class Queue {
     let canEnqueue = this.canEnqueue();
     if (canEnqueue === true) {
       this.queueControl.push(item);
+      return this.queueControl;
     } else {
       //Stack overflow case
       throw new Error('QUEUE_OVERFLOW');
@@ -36,7 +37,8 @@ class Queue {
     let isEmpty = this.isEmpty();
     if (isEmpty === false) {
     //remove the first item
-      this.stackControl.shift();
+    const  firstElement = this.queueControl.shift();
+      return firstElement;
     } else {
       //have a case of Stack Underflow
       throw new Error('QUEUE_UNDERFLOW');
@@ -45,7 +47,7 @@ class Queue {
 
   display() {
     for (let i = 0; i < this.queueControl.length; i++) {
-      return this.queueControl[i];
+      return this.queueControl;
     }
   }  
 }

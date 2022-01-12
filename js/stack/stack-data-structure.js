@@ -14,7 +14,7 @@ class Stack {
   }
 
   canPush() {
-    if (this.stackControl.length > this.MAX_SIZE) {
+    if (this.stackControl.length >= this.MAX_SIZE) {
        return false;
     } else {
       return true;
@@ -33,6 +33,7 @@ class Stack {
     let canPush = this.canPush();
     if (canPush === true) {
       this.stackControl.push(item);
+      return this.stackControl
     } else {
       //Stack overflow case
       throw new Error('STACK_OVERFLOW');
@@ -46,7 +47,7 @@ class Stack {
     let isEmpty = this.isEmpty();
 
     if (isEmpty === false) {
-      this.stackControl.pop();
+      return this.stackControl.pop();
     } else {
       //have a case of Stack Underflow
       throw new Error('STACK_UNDERFLOW');
@@ -56,7 +57,7 @@ class Stack {
   display() {
     //return items in stack
     for (let i = 0; i < this.stackControl.length; i++) {
-      return this.stackControl[i];
+      return this.stackControl;
     }
   }  
 }
